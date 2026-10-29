@@ -161,15 +161,236 @@
     border:0; background:rgba(255,255,255,.92); color:#131311; font-size:17px; cursor:pointer; line-height:1;
   }
 
+  /* ---------- Navigation panel ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:30; background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:9px; padding-bottom:9px;}
+  .nav-tabs{display:flex; gap:2px; flex-wrap:wrap;}
+  .nav-tab{
+    padding:7px 13px; border-radius:999px; font-size:14px; font-weight:500;
+    text-decoration:none; color:var(--muted); white-space:nowrap;
+  }
+  .nav-tab:hover{color:var(--ink); background:var(--soft);}
+  .nav-tab.on{background:var(--accent); color:var(--accent-ink); font-weight:600;}
+  .menu-btn{
+    display:inline-flex; align-items:center; gap:10px; flex:none;
+    padding:9px 4px 9px 14px; border:0; background:none; color:var(--ink);
+    font:600 14.5px "Libre Franklin",sans-serif; cursor:pointer;
+  }
+  .burger{position:relative; width:22px; height:16px; display:inline-block; flex:none;}
+  .burger span{
+    position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px;
+    transition:transform .18s ease, opacity .18s ease, top .18s ease;
+  }
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:7px;}
+  .burger span:nth-child(3){top:14px;}
+  .menu-btn[aria-expanded="true"] .burger span:nth-child(1){top:7px; transform:rotate(45deg);}
+  .menu-btn[aria-expanded="true"] .burger span:nth-child(2){opacity:0;}
+  .menu-btn[aria-expanded="true"] .burger span:nth-child(3){top:7px; transform:rotate(-45deg);}
+  .nav-panel{
+    position:absolute; top:100%; left:0; right:0; background:var(--bg); z-index:29;
+    border-bottom:1px solid var(--line); box-shadow:0 26px 36px rgba(0,0,0,.10);
+    max-height:calc(100vh - 60px); overflow:auto;
+  }
+  .panel-in{padding-top:6px; padding-bottom:28px;}
+  .panel-label{
+    font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--faint); margin:18px 2px 2px;
+  }
+  .panel-link{
+    display:block; padding:11px 2px; font-size:17.5px; font-weight:500;
+    text-decoration:none; color:var(--ink);
+  }
+  .panel-link:hover{text-decoration:underline; text-underline-offset:3px;}
+  .panel-group{border-top:1px solid var(--line); margin-top:14px;}
+  .group-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%;
+    padding:15px 2px; border:0; background:none; color:var(--ink); cursor:pointer; text-align:left;
+    font:500 17.5px "Libre Franklin",sans-serif;
+  }
+  .group-head .chev{
+    width:9px; height:9px; flex:none; border-right:2px solid var(--muted); border-bottom:2px solid var(--muted);
+    transform:rotate(45deg) translateY(-2px);
+  }
+  .group-head[aria-expanded="true"] .chev{transform:rotate(225deg) translateY(-1px);}
+  .group-body{background:var(--soft); border-radius:14px; padding:6px; margin:0 0 8px; max-height:46vh; overflow:auto;}
+  .group-body button, .group-body a{
+    display:block; width:100%; text-align:left; padding:11px 12px; border:0; border-radius:9px;
+    background:none; color:var(--ink); font:500 16px "Libre Franklin",sans-serif;
+    cursor:pointer; text-decoration:none;
+  }
+  .group-body button:hover, .group-body a:hover{background:var(--bg);}
+  .group-body button span, .group-body a span{color:var(--muted); font-size:13.5px;}
+  section[id]{scroll-margin-top:64px;}
+  @media (max-width:560px){
+    section[id]{scroll-margin-top:112px;}
+    .nav-tab{padding:7px 9px; font-size:13.5px;}
+    .menu-btn{font-size:13.5px; padding-left:8px;}
+  }
+
+  /* ---------- Notable roasters ---------- */
+  .roasters-intro{font-size:16px; line-height:1.65; margin:18px 0 4px; max-width:46em;}
+
+  /* ---------- Crawls, tips, passport, game ---------- */
+  .sec-intro{font-size:16px; line-height:1.65; margin:18px 0 4px; max-width:46em;}
+  .crawl{border-top:1px solid var(--line); padding:26px 0 8px;}
+  .crawl:first-of-type{border-top:0;}
+  .crawl h3{font-size:21px; font-weight:700; letter-spacing:-.015em; margin:0 0 4px;}
+  .crawl .blurb{font-size:15px; line-height:1.6; color:var(--ink); margin:0 0 8px; max-width:44em;}
+  .stop{
+    display:grid; grid-template-columns:34px 1fr auto; gap:12px; align-items:baseline;
+    padding:12px 6px; border-top:1px solid var(--line); cursor:pointer; width:100%;
+    background:none; border-left:0; border-right:0; border-bottom:0; text-align:left; font-family:inherit; color:var(--ink);
+  }
+  .stop:hover{background:var(--soft);}
+  .stop .num{
+    width:24px; height:24px; border-radius:50%; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; align-self:center;
+  }
+  .stop .name{font-size:16px; font-weight:600; letter-spacing:-.01em;}
+  .stop .sub{font-size:13.5px; color:var(--muted); margin-top:1px; display:block;}
+  .stop .ord{font-size:13.5px; color:var(--muted); white-space:nowrap; padding-top:4px;}
+  @media (max-width:560px){ .stop .ord{display:none;} }
+  .tip-group{margin-top:26px;}
+  .tip-group h3{font-size:17px; font-weight:700; margin:0 0 4px;}
+  .tip{
+    display:grid; grid-template-columns:1fr; gap:2px; padding:13px 6px; border-top:1px solid var(--line);
+  }
+  .tip .tname{
+    font-size:15.5px; font-weight:600; color:var(--ink); background:none; border:0; padding:0;
+    text-align:left; cursor:pointer; font-family:inherit; justify-self:start;
+  }
+  .tip .tname:hover{text-decoration:underline; text-underline-offset:3px;}
+  .tip p{margin:0; font-size:14.5px; line-height:1.6; color:var(--ink);}
+  .tip .plain{font-size:15.5px; font-weight:600;}
+  .pass-tools{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:16px 0 6px;}
+  .pass-track{flex:1 1 180px; height:8px; border-radius:99px; background:var(--soft); border:1px solid var(--line); overflow:hidden;}
+  .pass-bar{height:100%; width:0%; background:var(--accent); transition:width .25s ease;}
+  .pass-clear{
+    padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:transparent;
+    font:600 13.5px "Libre Franklin",sans-serif; color:var(--ink); cursor:pointer; flex:none;
+  }
+  .pass-row{
+    display:grid; grid-template-columns:38px 1fr; gap:6px; align-items:stretch;
+    border-top:1px solid var(--line);
+  }
+  .pass-check{
+    border:0; background:none; cursor:pointer; display:flex; align-items:flex-start; justify-content:center; padding-top:16px;
+  }
+  .pass-box{
+    width:22px; height:22px; border-radius:50%; border:2px solid var(--faint); flex:none;
+    display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:transparent;
+  }
+  .pass-check[aria-pressed="true"] .pass-box{background:var(--accent); border-color:var(--accent); color:var(--accent-ink);}
+  .pass-main{
+    display:grid; grid-template-columns:34px 1fr auto; gap:12px; align-items:baseline;
+    padding:15px 6px 15px 0; cursor:pointer; width:100%;
+    background:none; border:0; text-align:left; font-family:inherit; color:var(--ink);
+  }
+  .pass-main:hover{background:var(--soft);}
+  .pass-main .num{font-size:13px; color:var(--faint); font-weight:600; padding-top:2px;}
+  .pass-main .name{font-size:16.5px; font-weight:600; letter-spacing:-.01em;}
+  .pass-main .sub{font-size:13.5px; color:var(--muted); margin-top:1px;}
+  .pass-main .tag{font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); white-space:nowrap; padding-top:4px;}
+  .pass-row.done .pass-main .name{color:var(--muted);}
+  .game-card{background:var(--soft); border-radius:var(--radius); padding:22px 20px 24px; margin-top:20px;}
+  .game-stats{display:flex; gap:18px; flex-wrap:wrap; font-size:13.5px; color:var(--muted); margin-bottom:16px;}
+  .game-stats strong{color:var(--ink); font-weight:700;}
+  .cup-stage{display:flex; flex-direction:column; align-items:center; gap:14px;}
+  .cup{
+    position:relative; width:150px; height:190px; cursor:pointer;
+    border:3px solid var(--ink); border-top:0; border-radius:6px 6px 28px 28px; overflow:hidden;
+    background:var(--bg); -webkit-tap-highlight-color:transparent;
+  }
+  .cup-fill{position:absolute; left:0; right:0; bottom:0; height:0%; background:#8a5a33;}
+  @media (prefers-color-scheme: dark){ .cup-fill{background:#a9743f;} }
+  .cup-target{position:absolute; left:0; right:0; background:rgba(179,71,36,.28); border-top:2px dashed #b34724; border-bottom:2px dashed #b34724;}
+  .cup-target-label{font-size:12.5px; color:#b34724; font-weight:600;}
+  @media (prefers-color-scheme: dark){ .cup-target-label{color:#e08a63;} }
+  .game-msg{font-size:15.5px; line-height:1.55; text-align:center; margin:0; min-height:1.55em; max-width:30em;}
+  .game-btn{
+    width:100%; max-width:340px; padding:16px 20px; border-radius:999px; border:1px solid var(--accent);
+    background:var(--accent); color:var(--accent-ink); font:700 16.5px "Libre Franklin",sans-serif; cursor:pointer;
+  }
+  .game-note{font-size:12.5px; color:var(--muted); text-align:center; margin:0;}
+
+  /* ---------- Directory dropdowns ---------- */
+  .selects{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:10px; margin-top:12px;}
+  .sel{display:block;}
+  .sel > span{
+    display:block; font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--faint); margin:0 0 5px 4px;
+  }
+  .sel select{
+    width:100%; appearance:none; -webkit-appearance:none; cursor:pointer;
+    padding:10px 34px 10px 14px; font:500 14px "Libre Franklin",sans-serif; color:var(--ink);
+    background-color:var(--soft); border:1px solid var(--line); border-radius:999px; outline:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238a8a84' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 14px center;
+    text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+  }
+  .sel select:focus{border-color:var(--faint);}
+
   footer{padding:48px 0 56px; margin-top:56px; border-top:1px solid var(--line);}
   footer p{font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 8px; max-width:44em;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     .sheet,.sheet-back{transition:none;}
+    .burger span{transition:none;}
   }
 </style>
 </head>
 <body>
+
+<nav class="topnav" id="topnav" aria-label="Guide navigation">
+  <div class="wrap nav-in">
+    <div class="nav-tabs">
+      <a class="nav-tab" href="#standard" data-spy="standard">The standard</a>
+      <a class="nav-tab" href="#featured" data-spy="featured">Start here</a>
+      <a class="nav-tab" href="#roasters" data-spy="roasters">Roasters</a>
+      <a class="nav-tab" href="#crawls" data-spy="crawls">Crawls</a>
+      <a class="nav-tab" href="#map-section" data-spy="map-section">Map</a>
+      <a class="nav-tab" href="#directory" data-spy="directory">Directory</a>
+      <a class="nav-tab" href="#passport" data-spy="passport">Passport</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="navPanel">Menu <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span></button>
+  </div>
+  <div class="nav-panel" id="navPanel" hidden>
+    <div class="wrap panel-in">
+      <p class="panel-label">In this guide</p>
+      <a class="panel-link" href="#standard">The standard</a>
+      <a class="panel-link" href="#featured">Start here &mdash; featured shops</a>
+      <a class="panel-link" href="#roasters">Notable roasters</a>
+      <a class="panel-link" href="#crawls">Neighborhood crawls</a>
+      <a class="panel-link" href="#map-section">The map</a>
+      <a class="panel-link" href="#directory">Directory &mdash; all 100 shops</a>
+      <a class="panel-link" href="#good-to-know">Good to know</a>
+      <a class="panel-link" href="#passport">Caf&eacute; Passport</a>
+      <a class="panel-link" href="#game">While you wait &mdash; the pour game</a>
+      <a class="panel-link" href="#about">About this guide</a>
+      <div class="panel-group">
+        <button class="group-head" type="button" aria-expanded="false" aria-controls="boroGroup">Directory by borough <span class="chev" aria-hidden="true"></span></button>
+        <div class="group-body" id="boroGroup" hidden>
+          <button type="button" data-navboro="all">All boroughs</button>
+          <button type="button" data-navboro="Manhattan">Manhattan</button>
+          <button type="button" data-navboro="Brooklyn">Brooklyn</button>
+          <button type="button" data-navboro="Queens">Queens</button>
+        </div>
+      </div>
+      <div class="panel-group">
+        <button class="group-head" type="button" aria-expanded="false" aria-controls="featuredGroup">Featured shops <span class="chev" aria-hidden="true"></span></button>
+        <div class="group-body" id="featuredGroup" hidden></div>
+      </div>
+      <div class="panel-group">
+        <button class="group-head" type="button" aria-expanded="false" aria-controls="roasterGroup">Notable roasters <span class="chev" aria-hidden="true"></span></button>
+        <div class="group-body" id="roasterGroup" hidden></div>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap">
@@ -193,7 +414,7 @@
 
 <main class="wrap">
 
-  <section aria-labelledby="standard-h" style="padding-top:40px;">
+  <section id="standard" aria-labelledby="standard-h" style="padding-top:40px;">
     <div class="narrow">
       <h2 id="standard-h" style="margin-bottom:14px;">What counts as third-wave here</h2>
       <p class="standard">Specialty-grade beans. Single origins, roasted light to medium so the place they grew still tastes like something. Transparent sourcing &mdash; you can usually learn who grew the coffee and what was paid for it. And precise brewing, with pour-over and filter taken as seriously as espresso.</p>
@@ -202,13 +423,33 @@
     </div>
   </section>
 
-  <section aria-labelledby="featured-h">
+  <section id="featured" aria-labelledby="featured-h">
     <div class="sec-head">
       <h2 id="featured-h">Start here</h2>
       <span class="sec-note">Six shops that explain the scene</span>
     </div>
     <hr class="rule" />
     <div id="stories"></div>
+  </section>
+
+  <section id="roasters" aria-labelledby="roasters-h">
+    <div class="sec-head">
+      <h2 id="roasters-h">Notable roasters</h2>
+      <span class="sec-note" id="roasterCount"></span>
+    </div>
+    <hr class="rule" />
+    <p class="roasters-intro">These are the shops in the guide that roast their own beans &mdash; roasteries and roaster-caf&eacute;s with in-house roasting of their own. Multi-roaster caf&eacute;s, which pour beans roasted by others, are not included. Tap any one for its full profile.</p>
+    <div id="roasterRows"></div>
+  </section>
+
+  <section id="crawls" aria-labelledby="crawls-h">
+    <div class="sec-head">
+      <h2 id="crawls-h">Neighborhood crawls</h2>
+      <span class="sec-note">Three short walking routes</span>
+    </div>
+    <hr class="rule" />
+    <p class="sec-intro">Short routes through the clusters already in the directory, in a sensible visiting order. Every stop is a shop from the guide, with its real address &mdash; tap a stop for its full profile.</p>
+    <div id="crawlList"></div>
   </section>
 
   <section id="map-section" aria-labelledby="map-h">
@@ -236,10 +477,96 @@
         <button class="chip" data-borough="Brooklyn" aria-pressed="false">Brooklyn</button>
         <button class="chip" data-borough="Queens" aria-pressed="false">Queens</button>
       </div>
+      <div class="selects">
+        <label class="sel"><span>Neighborhood</span>
+          <select id="hoodSel" aria-label="Filter by neighborhood">
+            <option value="all">All neighborhoods</option>
+          </select>
+        </label>
+        <label class="sel"><span>Shop type</span>
+          <select id="typeSel" aria-label="Filter by shop type">
+            <option value="all">All types</option>
+          </select>
+        </label>
+        <label class="sel"><span>Sort</span>
+          <select id="sortSel" aria-label="Sort the directory">
+            <option value="guide">Guide order</option>
+            <option value="az">Name, A&ndash;Z</option>
+            <option value="boro">Borough, then name</option>
+          </select>
+        </label>
+        <label class="sel"><span>Jump to a shop</span>
+          <select id="jumpSel" aria-label="Jump to a shop profile">
+            <option value="">Choose a shop&hellip;</option>
+          </select>
+        </label>
+      </div>
       <p class="count-line" id="countLine"></p>
     </div>
     <div id="rows"></div>
     <p class="empty" id="emptyMsg">No shops match that search. Try a neighborhood &mdash; East Village, Bushwick, Williamsburg &mdash; or clear the filters.</p>
+  </section>
+
+  <section id="good-to-know" aria-labelledby="gtk-h">
+    <div class="sec-head">
+      <h2 id="gtk-h">Good to know</h2>
+      <span class="sec-note">From the profiles themselves</span>
+    </div>
+    <hr class="rule" />
+    <p class="sec-intro">Practical details gathered from the shop profiles in this guide, pulled together in one place. Tap a shop&rsquo;s name for its full profile.</p>
+    <div id="tipList"></div>
+  </section>
+
+  <section id="passport" aria-labelledby="passport-h">
+    <div class="sec-head">
+      <h2 id="passport-h">Caf&eacute; Passport</h2>
+      <span class="sec-note" id="passportCount">0 of 100 visited</span>
+    </div>
+    <hr class="rule" />
+    <p class="sec-intro">All 100 shops, as a checklist. Tap the circle to mark a shop off as you visit it, and tap the shop itself for its profile. Marks save in this browser only.</p>
+    <div class="pass-tools">
+      <div class="pass-track" role="progressbar" id="passTrack" aria-label="Passport progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pass-bar" id="passBar"></div></div>
+      <button class="pass-clear" id="passClear" type="button">Clear marks</button>
+    </div>
+    <div id="passportRows"></div>
+  </section>
+
+  <section id="game" aria-labelledby="game-h">
+    <div class="sec-head">
+      <h2 id="game-h">While you wait</h2>
+      <span class="sec-note">Five rounds &middot; about a minute</span>
+    </div>
+    <hr class="rule" />
+    <p class="sec-intro">In line, or waiting on a drink? The cup pours on its own &mdash; tap the big button (or the cup) to stop the pour inside the marked target band. Each round pours faster than the last.</p>
+    <div class="game-card">
+      <div class="game-stats">
+        <span>Round <strong id="gameRound">&mdash;</strong></span>
+        <span>Score <strong id="gameScore">0</strong></span>
+        <span>Best <strong id="gameBest">0</strong></span>
+      </div>
+      <div class="cup-stage">
+        <div>
+          <div class="cup" id="gameCup" role="button" tabindex="0" aria-label="Coffee cup — tap to stop the pour">
+            <div class="cup-target" id="gameTarget" style="display:none;"></div>
+            <div class="cup-fill" id="gameFill"></div>
+          </div>
+          <p class="cup-target-label" id="gameTargetLabel" style="text-align:center; margin:8px 0 0; visibility:hidden;">&#8593; stop inside the band</p>
+        </div>
+        <p class="game-msg" id="gameMsg" aria-live="polite">Five rounds. Stop the pour inside the band &mdash; closest to its middle scores most.</p>
+        <button class="game-btn" id="gameBtn" type="button">Start pouring</button>
+        <p class="game-note">Best score saves in this browser only.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="sec-head">
+      <h2 id="about-h">About this guide</h2>
+    </div>
+    <hr class="rule" />
+    <div class="narrow">
+      <p class="standard" style="margin-top:18px;">The NYC Coffee Guide was created by <strong>Brian Miller</strong>, its creator and owner. It is an independent guide to New York City&rsquo;s specialty coffee shops, built from his own picks and verified research &mdash; with Sey Coffee in Bushwick as the benchmark for what counts as third-wave here.</p>
+    </div>
   </section>
 
 </main>
@@ -466,31 +793,79 @@ document.getElementById('sheetClose').addEventListener('click', closeSheet);
 sheetBack.addEventListener('click', closeSheet);
 document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !sheet.hidden) closeSheet(); });
 
-/* ---------- Search & filter ---------- */
+/* ---------- Search, filters & dropdowns ---------- */
 var searchEl = document.getElementById('search');
 var countLine = document.getElementById('countLine');
 var emptyMsg = document.getElementById('emptyMsg');
+var hoodSel = document.getElementById('hoodSel');
+var typeSel = document.getElementById('typeSel');
+var sortSel = document.getElementById('sortSel');
+var jumpSel = document.getElementById('jumpSel');
 var activeBoro = 'all';
+var activeHood = 'all';
+var activeType = 'all';
+
+/* Populate the dropdowns from the shop data */
+(function(){
+  var hoods = {}, types = {};
+  SHOPS.forEach(function(s){ hoods[s.hood] = true; types[s.type] = true; });
+  Object.keys(hoods).sort().forEach(function(h){
+    var o = document.createElement('option'); o.value = h; o.textContent = h; hoodSel.appendChild(o);
+  });
+  Object.keys(types).sort().forEach(function(t){
+    var o = document.createElement('option'); o.value = t; o.textContent = t; typeSel.appendChild(o);
+  });
+  SHOPS.forEach(function(s, i){
+    var o = document.createElement('option'); o.value = i;
+    o.textContent = (i + 1) + '. ' + s.n + ' — ' + s.hood;
+    jumpSel.appendChild(o);
+  });
+})();
+
 function applyFilter(){
   var q = searchEl.value.trim().toLowerCase();
   var shown = 0;
   SHOPS.forEach(function(s, i){
     var hay = (s.n + ' ' + s.hood + ' ' + s.boro + ' ' + s.addr + ' ' + s.type + ' ' + s.order).toLowerCase();
-    var ok = (activeBoro === 'all' || s.boro === activeBoro) && (!q || hay.indexOf(q) !== -1);
+    var ok = (activeBoro === 'all' || s.boro === activeBoro)
+      && (activeHood === 'all' || s.hood === activeHood)
+      && (activeType === 'all' || s.type === activeType)
+      && (!q || hay.indexOf(q) !== -1);
     rowEls[i].style.display = ok ? '' : 'none';
     if(ok) shown++;
   });
   countLine.textContent = 'Showing ' + shown + ' of ' + SHOPS.length + ' shops';
   emptyMsg.style.display = shown ? 'none' : 'block';
 }
+function setBorough(b){
+  activeBoro = b;
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.setAttribute('aria-pressed', c.getAttribute('data-borough') === b ? 'true' : 'false');
+  });
+  applyFilter();
+}
 searchEl.addEventListener('input', applyFilter);
 document.querySelectorAll('.chip').forEach(function(chip){
-  chip.addEventListener('click', function(){
-    document.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
-    chip.setAttribute('aria-pressed','true');
-    activeBoro = chip.getAttribute('data-borough');
-    applyFilter();
-  });
+  chip.addEventListener('click', function(){ setBorough(chip.getAttribute('data-borough')); });
+});
+hoodSel.addEventListener('change', function(){ activeHood = hoodSel.value; applyFilter(); });
+typeSel.addEventListener('change', function(){ activeType = typeSel.value; applyFilter(); });
+sortSel.addEventListener('change', function(){
+  var mode = sortSel.value;
+  var order = SHOPS.map(function(s, i){ return i; });
+  if(mode === 'az'){
+    order.sort(function(a, b){ return SHOPS[a].n.localeCompare(SHOPS[b].n); });
+  } else if(mode === 'boro'){
+    order.sort(function(a, b){
+      return SHOPS[a].boro.localeCompare(SHOPS[b].boro) || SHOPS[a].n.localeCompare(SHOPS[b].n);
+    });
+  }
+  order.forEach(function(i){ rowsEl.appendChild(rowEls[i]); });
+});
+jumpSel.addEventListener('change', function(){
+  if(jumpSel.value === '') return;
+  openSheet(parseInt(jumpSel.value, 10));
+  jumpSel.value = '';
 });
 applyFilter();
 
@@ -503,6 +878,327 @@ function showMapFallback(){
 try {
   MapHelpers.mountPlaceListMap(document.getElementById('map'), {places: places, rows: rowEls, baseStyle: 'light'}, showMapFallback);
 } catch(e) { showMapFallback(); }
+
+/* ---------- Notable roasters (shops that roast their own beans) ---------- */
+function isRoaster(s){ var t = s.type.toLowerCase(); return t.indexOf('roaster') !== -1 && t.indexOf('multi-roaster') === -1 && t.indexOf('multi') === -1; }
+var roasterIdx = [];
+SHOPS.forEach(function(s, i){ if(isRoaster(s)) roasterIdx.push(i); });
+document.getElementById('roasterCount').textContent = roasterIdx.length + ' of the ' + SHOPS.length + ' roast their own';
+var roasterRowsEl = document.getElementById('roasterRows');
+roasterIdx.forEach(function(i){
+  var s = SHOPS[i];
+  var r = document.createElement('button');
+  r.className = 'row'; r.type = 'button';
+  r.setAttribute('aria-label', s.n + ', ' + s.hood);
+  var num = document.createElement('span'); num.className = 'num'; num.textContent = i + 1;
+  var mid = document.createElement('span');
+  var nm = document.createElement('span'); nm.className = 'name'; nm.textContent = s.n;
+  var sub = document.createElement('span'); sub.className = 'sub';
+  sub.textContent = s.hood + ' · ' + s.addr;
+  sub.style.display = 'block';
+  mid.appendChild(nm); mid.appendChild(sub);
+  var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = s.type;
+  r.appendChild(num); r.appendChild(mid); r.appendChild(tag);
+  r.addEventListener('click', function(){ openSheet(i); });
+  roasterRowsEl.appendChild(r);
+});
+
+/* ---------- Helpers for the added sections ---------- */
+var shopIndexByName = {};
+SHOPS.forEach(function(s, i){ shopIndexByName[s.n] = i; });
+function shopRowButton(i, cls){
+  var s = SHOPS[i];
+  var r = document.createElement('button');
+  r.className = cls; r.type = 'button';
+  r.setAttribute('aria-label', s.n + ', ' + s.hood);
+  var num = document.createElement('span'); num.className = 'num'; num.textContent = i + 1;
+  var mid = document.createElement('span');
+  var nm = document.createElement('span'); nm.className = 'name'; nm.textContent = s.n;
+  var sub = document.createElement('span'); sub.className = 'sub';
+  sub.textContent = s.hood + ' · ' + s.addr;
+  sub.style.display = 'block';
+  mid.appendChild(nm); mid.appendChild(sub);
+  r.appendChild(num); r.appendChild(mid);
+  r.addEventListener('click', function(){ openSheet(i); });
+  return r;
+}
+
+/* ---------- Neighborhood crawls ---------- */
+var CRAWLS = [
+  {title:'Bushwick & East Williamsburg', blurb:'West to east through the Bushwick cluster. Loveless Coffees is, as its profile puts it, a short walk from Sey — and the route ends at La Cabra\u2019s Bushwick roastery and Variety\u2019s Wyckoff Avenue caf\u00e9.', stops:['Sey Coffee','Dayglow','Loveless Coffees','YellowSun Coffee','La Cabra Roastery','Variety Coffee Roasters \u2014 Bushwick']},
+  {title:'East Village', blurb:'South to north, from 1st Street up to 13th Street. It starts at Moon Coffee Lab on purpose: its profile warns it is daytime-only (8 AM\u20132 PM), so it comes first.', stops:['Moon Coffee Lab','Coffee Project New York','Abra\u00e7o','La Cabra \u2014 East Village','Hi-Collar','Everyman Espresso \u2014 East Village']},
+  {title:'Williamsburg', blurb:'From Devoci\u00f3n on Grand Street and Partners\u2019 North 6th Street roastery, east to Olas on Lorimer Street and the Graham Avenue pair, Hungry Ghost and Variety.', stops:['Devoci\u00f3n','Partners Coffee Roastery','Copper Mug Coffee','Olas Coffee','Hungry Ghost','Variety Coffee Roasters']}
+];
+var crawlListEl = document.getElementById('crawlList');
+CRAWLS.forEach(function(route){
+  var wrap = document.createElement('div'); wrap.className = 'crawl';
+  var h = document.createElement('h3'); h.textContent = route.title; wrap.appendChild(h);
+  var b = document.createElement('p'); b.className = 'blurb'; b.textContent = route.blurb; wrap.appendChild(b);
+  route.stops.forEach(function(name, k){
+    var i = shopIndexByName[name];
+    if(i === undefined) return;
+    var r = shopRowButton(i, 'stop');
+    r.querySelector('.num').textContent = k + 1;
+    var ord = document.createElement('span'); ord.className = 'ord';
+    ord.textContent = SHOPS[i].boro;
+    r.appendChild(ord);
+    wrap.appendChild(r);
+  });
+  crawlListEl.appendChild(wrap);
+});
+
+/* ---------- Good to know (every tip taken from that shop's profile) ---------- */
+var TIP_GROUPS = [
+  {title:'Check the hours before you go', tips:[
+    {shop:'Parlor Coffee', text:'Weekend-only public hours: Saturday\u2013Sunday, 9 AM\u20133 PM \u2014 check before going.'},
+    {shop:'Moon Coffee Lab', text:'Daytime-only: listings say 8 AM\u20132 PM \u2014 check before going. Its profile adds that it keeps a short day, so plan for the morning.'},
+    {shop:null, label:'Every shop', text:'Hours change, and a few of these keep unusual ones \u2014 glance at any shop\u2019s current hours the day you visit.'}
+  ]},
+  {title:'Leave the laptop behind', tips:[
+    {shop:'Abra\u00e7o', text:'A no-laptop espresso bar \u2014 and whole milk only, no substitutions.'},
+    {shop:'Do Not Feed Alligators', text:'No laptops \u2014 though there is a garden out back, and hours that run later than most specialty shops.'},
+    {shop:'Terremoto Coffee', text:'A happily strict no-phone-calls policy, in a tiny room on West 15th Street.'}
+  ]},
+  {title:'At the bar', tips:[
+    {shop:'Ninth Street Espresso', text:'A purist menu \u2014 no flavored syrups, no fuss, just meticulously pulled shots.'},
+    {shop:'Yafa Caf\u00e9', text:'Yemeni brunch runs Friday\u2013Sunday \u2014 its profile\u2019s order is a cardamom or qishr latte alongside it.'}
+  ]},
+  {title:'Open later, or on after dark', tips:[
+    {shop:'Qahwah House', text:'Open late \u2014 Jabal Haraz coffee, a qishr, or adeni chai.'},
+    {shop:'Dayglow', text:'At night the space becomes the Niteglow bar.'},
+    {shop:'Hi-Collar', text:'A kissaten by day; by night it becomes an izakaya with live jazz.'}
+  ]}
+];
+var tipListEl = document.getElementById('tipList');
+TIP_GROUPS.forEach(function(g){
+  var gw = document.createElement('div'); gw.className = 'tip-group';
+  var h = document.createElement('h3'); h.textContent = g.title; gw.appendChild(h);
+  g.tips.forEach(function(t){
+    var d = document.createElement('div'); d.className = 'tip';
+    if(t.shop && shopIndexByName[t.shop] !== undefined){
+      var i = shopIndexByName[t.shop];
+      var btn = document.createElement('button');
+      btn.className = 'tname'; btn.type = 'button'; btn.textContent = t.shop;
+      btn.addEventListener('click', function(){ openSheet(i); });
+      d.appendChild(btn);
+    } else {
+      var lab = document.createElement('span'); lab.className = 'plain'; lab.textContent = t.label || t.shop || '';
+      d.appendChild(lab);
+    }
+    var p = document.createElement('p'); p.textContent = t.text; d.appendChild(p);
+    gw.appendChild(d);
+  });
+  tipListEl.appendChild(gw);
+});
+
+/* ---------- Café Passport (marks save in this browser only) ---------- */
+var PASS_KEY = 'nycCoffeePassportV1';
+var visited = {};
+try {
+  var savedPass = window.localStorage.getItem(PASS_KEY);
+  if(savedPass) visited = JSON.parse(savedPass) || {};
+} catch(e) { visited = {}; }
+function savePassport(){
+  try { window.localStorage.setItem(PASS_KEY, JSON.stringify(visited)); } catch(e) {}
+}
+var passportRowsEl = document.getElementById('passportRows');
+var passCheckEls = [];
+function updatePassportCount(){
+  var n = 0;
+  SHOPS.forEach(function(s, i){ if(visited[i]) n++; });
+  document.getElementById('passportCount').textContent = n + ' of ' + SHOPS.length + ' visited';
+  document.getElementById('passBar').style.width = (SHOPS.length ? (n / SHOPS.length * 100) : 0) + '%';
+  document.getElementById('passTrack').setAttribute('aria-valuenow', String(n));
+}
+SHOPS.forEach(function(s, i){
+  var row = document.createElement('div'); row.className = 'pass-row';
+  var chk = document.createElement('button');
+  chk.className = 'pass-check'; chk.type = 'button';
+  chk.setAttribute('aria-pressed', visited[i] ? 'true' : 'false');
+  chk.setAttribute('aria-label', 'Mark ' + s.n + ' as visited');
+  var box = document.createElement('span'); box.className = 'pass-box'; box.textContent = '\u2713';
+  chk.appendChild(box);
+  chk.addEventListener('click', function(){
+    if(visited[i]){ delete visited[i]; } else { visited[i] = true; }
+    chk.setAttribute('aria-pressed', visited[i] ? 'true' : 'false');
+    row.classList.toggle('done', !!visited[i]);
+    savePassport(); updatePassportCount();
+  });
+  passCheckEls.push(chk);
+  if(visited[i]) row.classList.add('done');
+  row.appendChild(chk);
+  var main = shopRowButton(i, 'pass-main');
+  main.querySelector('.num').textContent = i + 1;
+  var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = s.boro;
+  main.appendChild(tag);
+  row.appendChild(main);
+  passportRowsEl.appendChild(row);
+});
+document.getElementById('passClear').addEventListener('click', function(){
+  visited = {};
+  passCheckEls.forEach(function(c){ c.setAttribute('aria-pressed', 'false'); });
+  passportRowsEl.querySelectorAll('.pass-row').forEach(function(r){ r.classList.remove('done'); });
+  savePassport(); updatePassportCount();
+});
+updatePassportCount();
+
+/* ---------- While you wait: the pour game ---------- */
+var BEST_KEY = 'nycCoffeePourBestV1';
+var gameBest = 0;
+try { gameBest = parseInt(window.localStorage.getItem(BEST_KEY) || '0', 10) || 0; } catch(e) { gameBest = 0; }
+var gameBtn = document.getElementById('gameBtn');
+var gameFill = document.getElementById('gameFill');
+var gameTarget = document.getElementById('gameTarget');
+var gameTargetLabel = document.getElementById('gameTargetLabel');
+var gameMsg = document.getElementById('gameMsg');
+var gameRoundEl = document.getElementById('gameRound');
+var gameScoreEl = document.getElementById('gameScore');
+var gameBestEl = document.getElementById('gameBest');
+gameBestEl.textContent = gameBest;
+var G = {state:'idle', round:0, total:0, fill:0, lo:70, hi:80, raf:null, startTs:0, duration:2600};
+var DURATIONS = [2600, 2250, 1950, 1650, 1400];
+function gameRenderStats(){
+  gameRoundEl.textContent = G.round ? (G.round + ' of 5') : '\u2014';
+  gameScoreEl.textContent = G.total;
+  gameBestEl.textContent = gameBest;
+}
+function gameStopAnim(){ if(G.raf) cancelAnimationFrame(G.raf); G.raf = null; }
+function gameFinishPour(overflow){
+  gameStopAnim();
+  G.state = (G.round >= 5) ? 'done' : 'between';
+  var center = (G.lo + G.hi) / 2;
+  var diff = Math.abs(G.fill - center);
+  var pts = overflow ? 0 : Math.max(0, Math.round(100 - diff * 5));
+  G.total += pts;
+  var verdict;
+  if(overflow) verdict = 'It overflowed \u2014 no points that round.';
+  else if(diff <= 1.5) verdict = 'Right on the line. ';
+  else if(G.fill >= G.lo && G.fill <= G.hi) verdict = 'In the band. ';
+  else if(diff <= 10) verdict = 'Just outside the band. ';
+  else verdict = 'Off the mark. ';
+  var msg = verdict + 'Stopped at ' + Math.round(G.fill) + '% (band ' + G.lo + '\u2013' + G.hi + '%). +' + pts + ' points.';
+  if(G.state === 'done'){
+    if(G.total > gameBest){
+      gameBest = G.total;
+      try { window.localStorage.setItem(BEST_KEY, String(gameBest)); } catch(e) {}
+      msg += ' Final score: ' + G.total + ' \u2014 a new best.';
+    } else {
+      msg += ' Final score: ' + G.total + '. Best: ' + gameBest + '.';
+    }
+    gameBtn.textContent = 'Play again';
+  } else {
+    gameBtn.textContent = 'Next round';
+  }
+  gameMsg.textContent = msg;
+  gameRenderStats();
+}
+function gameTick(ts){
+  if(G.state !== 'pouring') return;
+  if(!G.startTs) G.startTs = ts;
+  G.fill = Math.min(100, (ts - G.startTs) / G.duration * 100);
+  gameFill.style.height = G.fill + '%';
+  if(G.fill >= 100){ gameFinishPour(true); return; }
+  G.raf = requestAnimationFrame(gameTick);
+}
+function gameStartRound(){
+  G.round++;
+  G.fill = 0; G.startTs = 0;
+  G.duration = DURATIONS[G.round - 1] || 1400;
+  var center = 68 + Math.floor(Math.random() * 21);
+  G.lo = center - 5; G.hi = center + 5;
+  gameTarget.style.display = 'block';
+  gameTarget.style.bottom = G.lo + '%';
+  gameTarget.style.height = (G.hi - G.lo) + '%';
+  gameTargetLabel.style.visibility = 'visible';
+  gameFill.style.height = '0%';
+  G.state = 'pouring';
+  gameMsg.textContent = 'Pouring\u2026 tap Stop when the coffee reaches the band.';
+  gameBtn.textContent = 'Stop the pour';
+  gameRenderStats();
+  G.raf = requestAnimationFrame(gameTick);
+}
+gameBtn.addEventListener('click', function(){
+  if(G.state === 'pouring'){ gameFinishPour(false); return; }
+  if(G.state === 'between'){ gameStartRound(); return; }
+  G.round = 0; G.total = 0; gameRenderStats();
+  gameStartRound();
+});
+var gameCup = document.getElementById('gameCup');
+gameCup.addEventListener('click', function(){ if(G.state === 'pouring') gameFinishPour(false); });
+gameCup.addEventListener('keydown', function(e){
+  if((e.key === 'Enter' || e.key === ' ') && G.state === 'pouring'){ e.preventDefault(); gameFinishPour(false); }
+});
+gameRenderStats();
+
+/* ---------- Navigation panel (hamburger menu) ---------- */
+var topnav = document.getElementById('topnav');
+var menuBtn = document.getElementById('menuBtn');
+var navPanel = document.getElementById('navPanel');
+function closePanel(){
+  navPanel.hidden = true;
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+menuBtn.addEventListener('click', function(){
+  var open = navPanel.hidden;
+  if(open){ navPanel.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); }
+  else closePanel();
+});
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePanel(); });
+navPanel.querySelectorAll('.group-head').forEach(function(head){
+  head.addEventListener('click', function(){
+    var body = document.getElementById(head.getAttribute('aria-controls'));
+    var open = body.hidden;
+    body.hidden = !open;
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+navPanel.querySelectorAll('.panel-link').forEach(function(link){
+  link.addEventListener('click', closePanel);
+});
+navPanel.querySelectorAll('[data-navboro]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    setBorough(btn.getAttribute('data-navboro'));
+    closePanel();
+    document.getElementById('directory').scrollIntoView({behavior: 'smooth'});
+  });
+});
+function fillPanelGroup(el, indices){
+  indices.forEach(function(i){
+    var s = SHOPS[i];
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.appendChild(document.createTextNode(s.n + ' '));
+    var sub = document.createElement('span'); sub.textContent = '· ' + s.hood + ', ' + s.boro;
+    b.appendChild(sub);
+    b.addEventListener('click', function(){ closePanel(); openSheet(i); });
+    el.appendChild(b);
+  });
+}
+fillPanelGroup(document.getElementById('featuredGroup'), SHOPS.map(function(s, i){ return s.story ? i : -1; }).filter(function(i){ return i >= 0; }));
+fillPanelGroup(document.getElementById('roasterGroup'), roasterIdx);
+
+/* Keep the sticky directory tools tucked under the nav panel */
+var toolsEl = document.querySelector('.tools');
+function syncToolsTop(){ toolsEl.style.top = topnav.offsetHeight + 'px'; }
+syncToolsTop();
+window.addEventListener('resize', syncToolsTop);
+
+/* Scroll-spy: highlight the tab for the section in view */
+var spyTabs = document.querySelectorAll('.nav-tab');
+if('IntersectionObserver' in window){
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      spyTabs.forEach(function(t){
+        t.classList.toggle('on', t.getAttribute('data-spy') === en.target.id);
+      });
+    });
+  }, {rootMargin: '-30% 0px -60% 0px'});
+  ['standard','featured','roasters','crawls','map-section','directory','good-to-know','passport','game','about'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) spy.observe(el);
+  });
+}
 </script>
 </body>
 </html>
