@@ -166,14 +166,7 @@
     position:sticky; top:0; z-index:30; background:var(--bg);
     border-bottom:1px solid var(--line);
   }
-  .nav-in{display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:9px; padding-bottom:9px;}
-  .nav-tabs{display:flex; gap:2px; flex-wrap:wrap;}
-  .nav-tab{
-    padding:7px 13px; border-radius:999px; font-size:14px; font-weight:500;
-    text-decoration:none; color:var(--muted); white-space:nowrap;
-  }
-  .nav-tab:hover{color:var(--ink); background:var(--soft);}
-  .nav-tab.on{background:var(--accent); color:var(--accent-ink); font-weight:600;}
+  .nav-in{display:flex; align-items:center; justify-content:flex-end; gap:14px; padding-top:9px; padding-bottom:9px;}
   .menu-btn{
     display:inline-flex; align-items:center; gap:10px; flex:none;
     padding:9px 4px 9px 14px; border:0; background:none; color:var(--ink);
@@ -226,8 +219,6 @@
   .group-body button span, .group-body a span{color:var(--muted); font-size:13.5px;}
   section[id]{scroll-margin-top:64px;}
   @media (max-width:560px){
-    section[id]{scroll-margin-top:112px;}
-    .nav-tab{padding:7px 9px; font-size:13.5px;}
     .menu-btn{font-size:13.5px; padding-left:8px;}
   }
 
@@ -347,15 +338,6 @@
 
 <nav class="topnav" id="topnav" aria-label="Guide navigation">
   <div class="wrap nav-in">
-    <div class="nav-tabs">
-      <a class="nav-tab" href="#standard" data-spy="standard">The standard</a>
-      <a class="nav-tab" href="#featured" data-spy="featured">Start here</a>
-      <a class="nav-tab" href="#roasters" data-spy="roasters">Roasters</a>
-      <a class="nav-tab" href="#crawls" data-spy="crawls">Crawls</a>
-      <a class="nav-tab" href="#map-section" data-spy="map-section">Map</a>
-      <a class="nav-tab" href="#directory" data-spy="directory">Directory</a>
-      <a class="nav-tab" href="#passport" data-spy="passport">Passport</a>
-    </div>
     <button class="menu-btn" id="menuBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="navPanel">Menu <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span></button>
   </div>
   <div class="nav-panel" id="navPanel" hidden>
@@ -371,6 +353,10 @@
       <a class="panel-link" href="#passport">Caf&eacute; Passport</a>
       <a class="panel-link" href="#game">While you wait &mdash; the pour game</a>
       <a class="panel-link" href="#about">About this guide</a>
+      <p class="panel-label">Support &amp; follow</p>
+      <a class="panel-link" href="https://venmo.com/u/brianqzmiller" target="_blank" rel="noopener">Tip on Venmo &mdash; @brianqzmiller</a>
+      <a class="panel-link" href="https://www.instagram.com/brianqzmiller/" target="_blank" rel="noopener">Instagram &mdash; @brianqzmiller</a>
+      <a class="panel-link" href="https://www.linkedin.com/in/bmiller97" target="_blank" rel="noopener">LinkedIn &mdash; Brian Miller</a>
       <div class="panel-group">
         <button class="group-head" type="button" aria-expanded="false" aria-controls="boroGroup">Directory by borough <span class="chev" aria-hidden="true"></span></button>
         <div class="group-body" id="boroGroup" hidden>
@@ -566,6 +552,13 @@
     <hr class="rule" />
     <div class="narrow">
       <p class="standard" style="margin-top:18px;">The NYC Coffee Guide was created by <strong>Brian Miller</strong>, its creator and owner. It is an independent guide to New York City&rsquo;s specialty coffee shops, built from his own picks and verified research &mdash; with Sey Coffee in Bushwick as the benchmark for what counts as third-wave here.</p>
+      <p class="standard">Brian Miller is a Global Advanced Manufacturing Engineer at Vertiv, based in Columbus, Ohio &mdash; a manufacturing engineer focused on building systems that last. He studied at Kennesaw State University &mdash; Southern Polytechnic College of Engineering and Engineering Technology.</p>
+      <p class="standard">If the guide helps you find a good cup, a tip is always appreciated &mdash; and you can follow along with Brian&rsquo;s coffee wanderings on Instagram, or connect with him on LinkedIn.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://venmo.com/u/brianqzmiller" target="_blank" rel="noopener">Tip on Venmo</a>
+        <a class="btn ghost" href="https://www.instagram.com/brianqzmiller/" target="_blank" rel="noopener">Instagram &mdash; @brianqzmiller</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/bmiller97" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
   </section>
 
@@ -1183,22 +1176,6 @@ function syncToolsTop(){ toolsEl.style.top = topnav.offsetHeight + 'px'; }
 syncToolsTop();
 window.addEventListener('resize', syncToolsTop);
 
-/* Scroll-spy: highlight the tab for the section in view */
-var spyTabs = document.querySelectorAll('.nav-tab');
-if('IntersectionObserver' in window){
-  var spy = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(!en.isIntersecting) return;
-      spyTabs.forEach(function(t){
-        t.classList.toggle('on', t.getAttribute('data-spy') === en.target.id);
-      });
-    });
-  }, {rootMargin: '-30% 0px -60% 0px'});
-  ['standard','featured','roasters','crawls','map-section','directory','good-to-know','passport','game','about'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el) spy.observe(el);
-  });
-}
 </script>
 </body>
 </html>
